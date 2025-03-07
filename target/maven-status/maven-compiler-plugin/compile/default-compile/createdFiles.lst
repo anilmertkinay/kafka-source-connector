@@ -1,0 +1,3 @@
+com/example/kafka/connector/KafkaSourceTask.class
+com/example/kafka/connector/KafkaSourceConfig.class
+com/example/kafka/connector/KafkaSourceConnector.class

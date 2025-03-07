@@ -1,0 +1,12 @@
+# Ignore IDE settings
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore OS-specific files
+Thumbs.db

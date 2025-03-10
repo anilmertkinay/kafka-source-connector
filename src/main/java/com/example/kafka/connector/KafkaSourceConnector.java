@@ -4,9 +4,9 @@ import org.apache.kafka.connect.connector.Task;
 import org.apache.kafka.connect.source.SourceConnector;
 import org.apache.kafka.common.config.ConfigDef;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
 
 public class KafkaSourceConnector extends SourceConnector {
     private Map<String, String> configProps;
@@ -23,25 +23,26 @@ public class KafkaSourceConnector extends SourceConnector {
 
     @Override
     public Class<? extends Task> taskClass() {
-        return KafkaSourceTask.class; // The Task class
+        return KafkaSourceTask.class;
     }
 
     @Override
     public List<Map<String, String>> taskConfigs(int maxTasks) {
-        List<Map<String, String>> configs = new ArrayList<>();
+        List<Map<String, String>> taskConfigs = new ArrayList<>();
         for (int i = 0; i < maxTasks; i++) {
-            configs.add(configProps);
+            taskConfigs.add(configProps);
         }
-        return configs;
+        return taskConfigs;
     }
 
     @Override
     public void stop() {
-        // Cleanup logic
+        // No specific resources to close
     }
 
+    // Fix: Implement the missing config() method
     @Override
     public ConfigDef config() {
-        return KafkaSourceConfig.configDef(); // Use the new config class
+        return KafkaSourceConfig.configDef();
     }
 }
